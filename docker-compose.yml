@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  mongodb:
+    container_name: mongo_container
+    image: mongo
+    networks:
+      - practica_net
+    # Resto de la configuración...
+
+  backend:
+    container_name: backend_container
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    networks:
+      - practica_net
+    # Resto de la configuración...
+
+  frontend:
+    container_name: frontend_container
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    networks:
+      - practica_net
+    # Resto de la configuración...
+
+  mongo-express:
+    container_name: adminMongo_container
+    image: mongo-express
+    networks:
+      - practica_net
+    # Resto de la configuración...
+
+  loadbalancer:
+    container_name: nginx_container
+    image: nginx
+    networks:
+      - practica_net
+    # Resto de la configuración...
+
+networks:
+  practica_net:
+    driver: bridge
