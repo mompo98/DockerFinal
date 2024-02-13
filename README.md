@@ -1,21 +1,34 @@
 https://github.com/mompo98/DockerFinal
-# Mi Proyecto con Docker Compose
+Implementación de la Configuración Docker y Documentación del Proyecto
+Este repositorio contiene la implementación de la configuración Docker para un proyecto que consta de backend, frontend, un servidor de MongoDB y un balanceador de carga Nginx. También se proporciona documentación detallada sobre cómo poner en marcha el proyecto utilizando Docker Compose.
 
-## Descripción
-Este proyecto utiliza Docker Compose para gestionar y orquestar los contenedores de las diferentes partes de la aplicación.
+Pasos Realizados:
+Estructura del Proyecto:
 
-## Requisitos
-- Docker
-- Docker Compose
+El proyecto está organizado en los siguientes directorios: backend, frontend, mongo, loadbalancer.
+Cada directorio contiene los archivos necesarios para ejecutar la respectiva parte del proyecto.
+Configuración de Docker:
 
-## Configuración
-1. Clona este repositorio en tu máquina local.
-2. Asegúrate de tener Docker y Docker Compose instalados en tu sistema.
-3. Configura las variables de entorno según se indique en el archivo `.env`.
+Se ha creado un archivo Dockerfile en los directorios backend y frontend para construir las imágenes Docker de estas partes del proyecto.
+Se ha creado un archivo docker-compose.yml en el directorio raíz del proyecto para orquestar los contenedores Docker.
+Configuración de MongoDB:
 
-## Uso
-1. En el directorio raíz del proyecto, ejecuta `docker-compose up -d` para iniciar todos los servicios en segundo plano.
-2. Accede a la aplicación en tu navegador web usando la URL proporcionada por el servicio correspondiente (por ejemplo, http://localhost:8080).
+Se ha incluido un script mongo-init.js para inicializar la base de datos MongoDB con datos iniciales.
+Se ha creado un script mongorestore.sh para restaurar una copia de seguridad de la base de datos MongoDB.
+Configuración de Nginx:
 
-## Personalización
-- Si necesitas personalizar la configuración de algún servicio, puedes modificar los archivos de configuración de Docker Compose en el directorio `docker-compose`.
+Se ha incluido un archivo de configuración nginx.conf en el directorio loadbalancer para configurar el balanceador de carga Nginx.
+Documentación del Proyecto:
+
+Se ha creado un archivo README.md en la raíz del repositorio GitHub para documentar los pasos de implementación y poner en marcha el proyecto.
+Se han incluido instrucciones detalladas sobre cómo construir y ejecutar los contenedores Docker utilizando Docker Compose.
+Puesta en Marcha del Proyecto:
+Para poner en marcha el proyecto, sigue estos pasos:
+
+Clona este repositorio en tu máquina local.
+Asegúrate de tener Docker y Docker Compose instalados en tu sistema.
+Desde la raíz del proyecto, ejecuta el siguiente comando para construir y ejecutar los contenedores Docker:
+css
+Copy code
+docker-compose up --build
+Una vez que los contenedores estén en ejecución, podrás acceder a la aplicación desde tu navegador web utilizando la URL correspondiente al balanceador de carga Nginx.
